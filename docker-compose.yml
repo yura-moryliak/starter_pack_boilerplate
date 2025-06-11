@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: food_court_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: food_court_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Password!
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - food_court_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: food_court_phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: admin
+      PMA_PASSWORD: Password!
+    ports:
+      - "8080:80"
+    networks:
+      - food_court_network
+
+networks:
+  food_court_network:
+
+volumes:
+  mysql_data:
