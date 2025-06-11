@@ -1,4 +1,4 @@
-# Starte pack boilerplate
+# Fullstack boilerplate
 
 This is a repository as a starter pack for to get and implement further structure for full stack apps.
 This pack includes the next features inside:
@@ -19,9 +19,13 @@ To make it running properly in the local environment, make sure to do the follow
 1. First build server
 2. Output server files will be stored in the dist folder see schema down below
 3. |./starter_pack_boilerplate
+4. 
    |...
+5. 
    | ./server_nestjs
+6. 
    | ./dist - server output files
+7. 
 4. Building UI
 5. By running the build process for UI - distribution will be stored in the server_nestjs dist folder
 6. Check out each service package.json to see run commands
