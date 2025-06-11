@@ -37,7 +37,6 @@ export class AuthService {
 
   async login(
     user: UserEntity,
-    req: Request,
     res: Response,
   ): Promise<{ access_token: string }> {
     const payload = { sub: user.id, email: user.email };

@@ -51,7 +51,6 @@ export class UserEntity extends BaseEntity {
   @Column({ default: '', nullable: true })
   passwordResetToken: string;
 
-  // Do not select
   @Column({ type: 'timestamp', nullable: true })
   passwordResetExpires: Date;
 }

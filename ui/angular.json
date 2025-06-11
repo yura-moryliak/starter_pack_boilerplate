@@ -7,19 +7,19 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "prefix": "fdc",
+          "prefix": "app",
           "style": "scss",
           "skipTests": true,
           "changeDetection": "OnPush"
         },
         "@schematics/angular:directive": {
-          "prefix": "fdc",
+          "prefix": "app",
           "skipTests": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "fdc",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",

@@ -3,11 +3,11 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
-    container_name: food_court_mysql
+    container_name: start_pack_boilerplate_mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: food_court_db
+      MYSQL_DATABASE: start_pack_boilerplate_db
       MYSQL_USER: admin
       MYSQL_PASSWORD: Password!
     ports:
@@ -15,11 +15,11 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
-      - food_court_network
+      - start_pack_boilerplate_network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: food_court_phpmyadmin
+    container_name: start_pack_boilerplate_phpmyadmin
     restart: always
     environment:
       PMA_HOST: mysql
@@ -28,10 +28,10 @@ services:
     ports:
       - "8080:80"
     networks:
-      - food_court_network
+      - start_pack_boilerplate_network
 
 networks:
-  food_court_network:
+  start_pack_boilerplate_network:
 
 volumes:
   mysql_data:

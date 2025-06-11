@@ -47,24 +47,10 @@ export class PasswordResetService {
 
     const resetLink: string = `${this.configService.get<string>('CLIENT_CORS_ORIGIN')}/reset-password?token=${token}`;
 
-    // TODO This is primarily 2 languages for now UA ans EN
-    // TODO Ideally in future there would be need to create own language table in DB to handle more languages
-    // TODO Check for NestJS i18n module!!!!!!!!!!
     await this.mailerService.sendMail({
       to: user.email,
-
-      // TODO For now only UA language is supported
-      subject: 'Запит на відновлення паролю',
-      template: `ua/reset-password`,
-
-      // subject:
-      //   user.lang === 'ua'
-      //     ? 'Запит на відновлення паролю'
-      //     : 'Password reset request',
-      // template:
-      //   user.lang === 'ua'
-      //     ? `${user.lang}/reset-password`
-      //     : `${user.lang}/reset-password`, // See TODO's
+      subject: 'Password reset request',
+      template: `en/reset-password`,
       context: {
         name: user.fullName || user.email,
         resetLink,

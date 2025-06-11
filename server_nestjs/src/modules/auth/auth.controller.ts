@@ -57,7 +57,6 @@ export class AuthController {
     res.json(access_token);
   }
 
-  // TODO
   @Post('reset-password/request')
   async resetPassword(
     @Body() { email }: PasswordResetRequestDto,
@@ -65,7 +64,6 @@ export class AuthController {
     await this.resetPasswordService.requestPasswordReset(email);
   }
 
-  // TODO
   @Post('reset-password/confirm')
   async confirmPasswordReset(
     @Body() { token, newPassword }: ConfirmPasswordResetDto,
