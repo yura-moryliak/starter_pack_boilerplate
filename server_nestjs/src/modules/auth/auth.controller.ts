@@ -20,7 +20,6 @@ export class AuthController {
   @Post('login')
   async login(
     @Body() body: LoginBodyDto,
-    @Req() req: Request,
     @Res() res: Response,
   ) {
     const user: UserEntity = await this.authService.validateUser(
@@ -28,7 +27,7 @@ export class AuthController {
       body.password,
     );
 
-    const { access_token } = await this.authService.login(user, req, res);
+    const { access_token } = await this.authService.login(user, res);
     res.json({ access_token });
   }
 
@@ -46,12 +45,10 @@ export class AuthController {
   @Post('google-auth')
   async googleAuth(
     @Body() { idToken }: GoogleLoginDto,
-    @Req() req: Request,
     @Res() res: Response,
   ): Promise<void> {
     const access_token = await this.authService.handleGoogleLogin(
       idToken,
-      req,
       res,
     );
     res.json(access_token);
