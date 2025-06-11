@@ -106,7 +106,6 @@ export class AuthService {
 
   async handleGoogleLogin(
     idToken: string,
-    req: Request,
     res: Response,
   ): Promise<{ access_token: string }> {
     const ticket: LoginTicket = await this.googleClient.verifyIdToken({
@@ -144,7 +143,7 @@ export class AuthService {
       await this.usersService.updateOne(user.id, user);
     }
 
-    return this.login(user, req, res);
+    return this.login(user, res);
   }
 
   private generateRefreshToken(userId: string): string {
@@ -176,7 +175,7 @@ export class AuthService {
         60 *
         60 *
         1000,
-      // maxAge: 60 * 1000, // 1 minutes for tests as refresh token expires in 1 minute
+      // maxAge: 60 * 1000, // 1 minute for tests as the refresh token expires in 1 minute
     });
   }
 
