@@ -36,10 +36,7 @@ export class PasswordResetService {
     user.passwordResetToken = token;
     user.passwordResetExpires = new Date(
       Date.now() +
-        +(
-          this.configService.get<string>('JWT_PASSWORD_RESET_EXPIRES_IN') ??
-          '15'
-        ) *
+        +this.configService.get<string>('JWT_PASSWORD_RESET_EXPIRES_IN')! *
           60 *
           1000,
     );
