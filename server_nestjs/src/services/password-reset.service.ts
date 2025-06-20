@@ -29,14 +29,14 @@ export class PasswordResetService {
     const token: string = this.jwtService.sign(payload, {
       secret: this.configService.get('JWT_PASSWORD_RESET_SECRET'),
       expiresIn: this.configService.get<string>(
-        'JWT_PASSWORD_RESET_EXPIRES_IN_MIN',
+        'JWT_PASSWORD_RESET_EXPIRES_IN',
       ),
     });
 
     user.passwordResetToken = token;
     user.passwordResetExpires = new Date(
       Date.now() +
-        +this.configService.get<string>('JWT_PASSWORD_RESET_EXPIRES_IN')! *
+        +this.configService.get<string>('JWT_PASSWORD_RESET_EXPIRES_IN_SECONDS')! *
           60 *
           1000,
     );
